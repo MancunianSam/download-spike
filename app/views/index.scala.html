@@ -1,0 +1,9 @@
+@import views.html.helper.CSRF
+@(keys: List[String])(implicit request: RequestHeader)
+
+@main("Welcome to Play") {
+  @CSRF.formField
+  @for(key <- keys) {
+    <a href="/download/@key">@key</a><br>
+  }
+}

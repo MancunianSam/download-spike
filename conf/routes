@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+GET     /presigned                           controllers.HomeController.presigned()
+GET     /download/:key                           controllers.HomeController.download(key)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# Routes necessary for play-pac4j
+GET         /callback                                @org.pac4j.play.CallbackController.callback(request: play.mvc.Http.Request)
+POST        /callback                                @org.pac4j.play.CallbackController.callback(request: play.mvc.Http.Request)
+GET         /logout                                  @org.pac4j.play.LogoutController.logout(request: play.mvc.Http.Request)

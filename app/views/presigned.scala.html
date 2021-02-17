@@ -1,0 +1,10 @@
+@import views.html.helper.CSRF
+@import controllers.HomeController.PresignedUrls
+@(urls: List[PresignedUrls])(implicit request: RequestHeader)
+
+@main("Welcome to Play") {
+  @CSRF.formField
+  @for(url <- urls) {
+    <a href="@url.url">@url.key</a><br>
+  }
+}
